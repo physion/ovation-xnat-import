@@ -51,18 +51,18 @@ def initialize(extra_jars=None):
         libpath = {
             "Darwin" : "/opt/ovation/lib:/opt/object/mac86_64/lib",
             "Linux" : "/usr/ovation/lib:/usr/object/linux86_64/lib/",
-            "Windows" : "", #TODO
+            "Windows" : "", #Handled by PATH (I think)
         }
 
         os_name = platform.system()
 
         if OVATION_API_JAR_PATH in os.environ:
-            platformClasspath = os.path.join(os.getcwd(), os.environ[OVATION_API_JAR_PATH])
+            platformClasspath = os.environ[OVATION_API_JAR_PATH]
         else:
             platformClasspath = classpath[os_name]
 
         if extra_jars is not None:
-            platformClasspath = platformClasspath + os.path.pathsep + os.path.pathsep.join((os.path.join(os.getcwd(), p) for p in extra_jars))
+            platformClasspath = platformClasspath + os.path.pathsep + os.path.pathsep.join(extra_jars)
 
         jpype.startJVM(jpype.getDefaultJVMPath(), 'ea',
                         '-Djava.class.path={0} '.format(platformClasspath),
