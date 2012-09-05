@@ -6,6 +6,7 @@
       <env name="TEST_MANAGER_JAR_PATH" value="src/java/test-manager/target/xnat-test-manager-1.0-SNAPSHOT.jar" />
       <env name="OVATION_TEST_FDID" value="100" />
       <env name="PYTHONPATH" value="src:test:$PYTHONPATH" />
+      <env name="OVATION_API_JAR_PATH" value="lib/ovation-api-1.4.jar" />
       <env name="OVATION_TEST_JAR_PATH" value="lib/ovation-test-manager-1.4.jar" />
       <env name="OVATION_CONNECTION_FILE" value="xnat_test_database.connection" />
     </envs>
