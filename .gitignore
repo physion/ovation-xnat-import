@@ -25,3 +25,13 @@ pip-log.txt
 
 #Mr Developer
 .mr.developer.cfg
+
+*.connection
+
+*.fdb
+
+*.jar
+
+*.DS_Store
+
+*.class
