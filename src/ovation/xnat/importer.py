@@ -21,7 +21,7 @@ def display_project_structure(url, username=None, password=None):
         _display_project(p)
 
 
-#noinspection PyUnresolvedReferences
+
 def print_entity_info(entity, info_indent=2):
     pp = PrettyPrinter(indent=info_indent)
     try:
