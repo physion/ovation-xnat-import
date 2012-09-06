@@ -16,11 +16,16 @@ def display_project_structure(url, username=None, password=None):
         display_project(p)
 
 
-def print_entity_info(entity, indent=4):
-    pp = PrettyPrinter(indent=indent)
-    pp.pprint("label: " + entity.label() if entity.label() is not None else "<None>")
-    pp.pprint("datatype: " + entity.datatype() if entity.datatype() is not None else "<None>")
-    pp.pprint("uri: " + entity._uri)
+def print_entity_info(entity, info_indent=4):
+    pp = PrettyPrinter(indent=info_indent)
+    pp.pprint(info_indent*" " + "label: " + entity.label() if entity.label() is not None else "<None>")
+    pp.pprint(info_indent*" " + "datatype: " + entity.datatype() if entity.datatype() is not None else "<None>")
+    pp.pprint(info_indent*" " + "uri: " + entity._uri)
+    try:
+        pp.pprint(info_indent*" " + "owners: " + entity.owners()[0])
+    except:
+        pass
+
 
 
 def display_project(project):
@@ -42,19 +47,19 @@ def display_project(project):
 def display_subject(s):
     pp = PrettyPrinter(indent=4)
     pp.pprint("Subject: " + s.id())
-    print_entity_info(s, indent=6)
+    print_entity_info(s, info_indent=6)
 
     # pp.pprint(s.attrs())
 
 def display_experiment(exp):
     pp = PrettyPrinter(indent=4)
     pp.pprint("Experiment: " + exp.id())
-    print_entity_info(exp, indent=6)
+    print_entity_info(exp, info_indent=6)
 
     for s in exp.scans():
         pps = PrettyPrinter(indent=6)
         pps.pprint("Scan: " + s.id())
-        print_entity_info(s, indent=8)
+        print_entity_info(s, info_indent=8)
 
         for r in s.resources():
             for f in r.files():

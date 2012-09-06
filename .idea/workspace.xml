@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="120608ed-01c7-4014-bd7a-bb0c3c8bb85c" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/Test.java" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ovation/xnat/importer.py" afterPath="$PROJECT_DIR$/src/ovation/xnat/importer.py" />
     </list>
@@ -77,10 +76,8 @@
       <file leaf-file-name="importer.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/ovation/xnat/importer.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="60" column="31" selection-start="1765" selection-end="1765" vertical-scroll-proportion="0.8064516">
-              <folding>
-                <element signature="e#22#55#0" expanded="true" />
-              </folding>
+            <state line="2" column="33" selection-start="55" selection-end="55" vertical-scroll-proportion="0.054145515">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -462,7 +459,11 @@
       <created>1346879597399</created>
       <updated>1346879597400</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Structure printed&#10;&#10;Still having trouble with attributes">
+      <created>1346909155990</created>
+      <updated>1346909155990</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -489,21 +490,21 @@
     <frame x="0" y="22" width="1218" height="778" extended-state="6" />
     <editor active="true" />
     <layout>
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3299923" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3299923" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3299923" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.070748866" sideWeight="0.6700077" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.33959043" sideWeight="0.41856927" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.33959043" sideWeight="0.7092846" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3993832" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.58143073" sideWeight="0.9877956" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.29071537" sideWeight="0.9877956" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3299923" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3299923" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3299923" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -544,7 +545,7 @@
     <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Importer spike" />
+    <option name="LAST_COMMIT_MESSAGE" value="Structure printed&#10;&#10;Still having trouble with attributes" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -560,6 +561,7 @@
     <MESSAGE value="Base test infrastructure&#10;&#10;Maven (test-manager) project for test manager&#10;Python unittest/nose framework for testing with common database." />
     <MESSAGE value="Trying to get the test manager jar to load" />
     <MESSAGE value="Importer spike" />
+    <MESSAGE value="Structure printed&#10;&#10;Still having trouble with attributes" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -587,9 +589,7 @@
     <entry file="file://$PROJECT_DIR$/src/ovation/xnat/importer.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="19" column="0" selection-start="407" selection-end="407" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#22#55#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -682,10 +682,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ovation/xnat/importer.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="60" column="31" selection-start="1765" selection-end="1765" vertical-scroll-proportion="0.8064516">
-          <folding>
-            <element signature="e#22#55#0" expanded="true" />
-          </folding>
+        <state line="2" column="33" selection-start="55" selection-end="55" vertical-scroll-proportion="0.054145515">
+          <folding />
         </state>
       </provider>
     </entry>
