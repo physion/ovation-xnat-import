@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="120608ed-01c7-4014-bd7a-bb0c3c8bb85c" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ovation/xnat/importer.py" afterPath="$PROJECT_DIR$/src/ovation/xnat/importer.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ovation/xnat/test/test_subjects.py" afterPath="$PROJECT_DIR$/src/ovation/xnat/test/test_subjects.py" />
     </list>
     <ignored path="ovation-xnat-import.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -476,7 +474,11 @@
       <created>1346962165719</created>
       <updated>1346962165719</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Subjects don't have an insertion date&#10;&#10;At least central.xnat.org doesn't have the insertion date available via the API.">
+      <created>1346965007426</created>
+      <updated>1346965007426</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -510,7 +512,7 @@
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.070748866" sideWeight="0.6700077" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18315618" sideWeight="0.6006168" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3993832" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3993832" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2613724" sideWeight="0.98855275" order="2" side_tool="false" content_ui="tabs" />
@@ -558,7 +560,7 @@
     <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Throttling API calls&#10;&#10;XNAT API bombs if you send &gt; 1 call/s" />
+    <option name="LAST_COMMIT_MESSAGE" value="Subjects don't have an insertion date&#10;&#10;At least central.xnat.org doesn't have the insertion date available via the API." />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -578,6 +580,7 @@
     <MESSAGE value="Retreiving attributes!" />
     <MESSAGE value="Throttling API calls&#10;Fucking XNAT API bombs if you send &gt; 1 call/s" />
     <MESSAGE value="Throttling API calls&#10;&#10;XNAT API bombs if you send &gt; 1 call/s" />
+    <MESSAGE value="Subjects don't have an insertion date&#10;&#10;At least central.xnat.org doesn't have the insertion date available via the API." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

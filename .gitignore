@@ -35,3 +35,7 @@ pip-log.txt
 *.DS_Store
 
 *.class
+
+*.DB
+
+*.JNL
