@@ -20,8 +20,9 @@ def import_projects(dsc, xnat):
     for project in xnat.select.projects():
         import_project(dsc, project)
 
-    print("Total projects: " + str(len(dsc.getContext().getProjects())))
 
+
+DATATYPE_PROPERTY = 'xnat:datatype'
 
 def import_project(dsc, xnatProject):
     """
@@ -29,20 +30,29 @@ def import_project(dsc, xnatProject):
 
     """
 
-    ctx = dsc.getContext()
-
     xnat_api_pause()
     name = xnatProject.attrs.get('xnat:projectData/name')
     xnat_api_pause()
     purpose = xnatProject.attrs.get('xnat:projectData/description')
+
+    startTime = None
+    for s in iterate_entity_collection(xnatProject.subjects):
+        src = insert_source(dsc, s)
+        sst = src.getOwnerProperty('xnat:INSERT_DATE')
+        if sst is not None and (startTime is None or sst.compareTo(startTime) < 0):
+            startTime = sst
+
+    for exp in iterate_entity_collection(xnatProject.experiments):
+        value = exp.attrs.get(exp.datatype() + '/date')
+        print value
+
+    ctx = dsc.getContext()
     project = ctx.insertProject(name,
         purpose,
-        datetime())
+        startTime if startTime is not None else datetime())
 
-    project.addProperty('xnat:datatype', xnatProject.datatype())
+    project.addProperty(DATATYPE_PROPERTY, xnatProject.datatype())
 
-    for s in iterate_entity_collection(xnatProject.subjects):
-        insert_source(dsc, s)
 
     xnat_api_pause()
     for k in xnatProject.attrs.get('xnat:projectData/keywords').split():
@@ -65,7 +75,9 @@ def insert_source(dsc, xnatSubject):
 
     ctx = dsc.getContext()
 
-    src = ctx.sourceForInsertion([sourceID], ['xnat:subjectURI'], [xnatSubject._uri])
+    src = ctx.sourceForInsertion([sourceID], ['xnat:subjectURI'], [xnatSubject._uri]).getSource()
+
+    src.addProperty(DATATYPE_PROPERTY, 'xnat:subjectData')
 
     return src
 

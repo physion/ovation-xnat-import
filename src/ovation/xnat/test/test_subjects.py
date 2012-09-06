@@ -27,3 +27,17 @@ class ImportingSubjects(OvationTestBase):
 
             eq_(1, len(sources))
             eq_(sources[0].getOwnerProperty('xnat:subjectURI'), s._uri)
+
+
+    @istest
+    def should_set_subject_datatype_property(self):
+        xnatProject = self._import_first_project()
+
+        ctx = self.dsc.getContext()
+
+        for s in iterate_entity_collection(xnatProject.subjects):
+            subjectID = s.id()
+            sources = ctx.getSources(subjectID)
+
+            eq_(1, len(sources))
+            eq_('xnat:subjectdData', sources[0].getOwnerProperty('xnat:datatype'))
