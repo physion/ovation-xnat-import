@@ -35,12 +35,15 @@ class OvationTestBase(unittest.TestCase):
                 host=gethostname(),
                 federatedDatabaseID=os.environ.get(OVATION_FDID_KEY, None))
 
-        test = api.java_package("us.physion.ovation.test.xnat")
-        print(api.java_class("java.lang.System").getProperty("java.class.path"))
-        print(api.java_class("java.lang.System").getProperty("java.library.path"))
+        test = api.ovation_package().test
 
-        tm = api.java_class("us.physion.ovation.test.xnat.OvationTestManager")
-        self.test_manager = test.OvationTestManager(self.connection_file_path)
+        self.test_manager = test.TestManager(self.connection_file_path,
+            'Institution',
+            'Lab',
+            'crS9RjS6wJgmZkJZ1WRbdEtIIwynAVmqFwrooGgsM7ytyR+wCD3xpjJEENey+b0GVVEgib++HAKh94LuvLQXQ2lL2UCUo75xJwVLL3wmd21WbumQqKzZk9p6fkHCVoiSxgon+2RaGA75ckKNmUVTeIBn+QkalKCg9p1P7FbWqH3diXlAOKND2mwjI8V4unq7aaKEUuCgdU9V/BjFBkoytG8FzyBCNn+cBUNTByYy7RxYxH37xECZJ6/hG/vP4QjKpks9cu3yQL9QjXBQIizrzini0eQj62j+QzCSf0oQg8KdIeZHuU+ZSZZ1pUHLYiOiQWaOL9cVPxqMzh5Q/Zvu6Q==',
+            'TestUser',
+            'TestPassword')
+        
         self.dsc = self.test_manager.setupDatabase()
 
     def tearDown(self):
