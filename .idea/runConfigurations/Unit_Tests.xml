@@ -3,10 +3,12 @@
     <option name="INTERPRETER_OPTIONS" value="" />
     <option name="PARENT_ENVS" value="true" />
     <envs>
-      <env name="TEST_MANAGER_JAR_PATH" value="lib/xnat-test-manager-1.0-SNAPSHOT.jar" />
+      <env name="XNAT_PASSWORD" value="yeujEhT9XLssXuoW2bzv" />
       <env name="OVATION_TEST_FDID" value="100" />
+      <env name="XNAT_USER" value="bwark" />
       <env name="PYTHONPATH" value="src:test:$PYTHONPATH" />
       <env name="OVATION_API_JAR_PATH" value="lib/ovation-api-1.4.jar" />
+      <env name="XNAT_URL" value="http://central.xnat.org" />
       <env name="OVATION_TEST_JAR_PATH" value="lib/ovation-test-manager-1.4.jar" />
       <env name="OVATION_CONNECTION_FILE" value="xnat_test_database.connection" />
     </envs>

@@ -9,3 +9,4 @@ class TestXNATInterface(OvationTestBase):
     def test_connects_to_xnat(self):
         central = Interface('http://central.xnat.org', anonymous=True)
         assert central is not None
+        assert len(central.select.projects().get()) > 0

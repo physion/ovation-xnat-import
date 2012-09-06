@@ -1,84 +1,77 @@
+'''
+Copyright (c) 2012 Physion Consulting, LLC
+'''
 __author__ = 'barry'
 
-from pyxnat.core import Interface
-from pyxnat.core.attributes import EAttrs as Attributes
+from ovation.api import datetime
+from ovation.xnat.util import iterate_entity_collection, xnat_api_pause
 
-from pprint import  PrettyPrinter
 
-def display_project_structure(url, username=None, password=None):
-    if username is None:
-        xnat = Interface(url, anonymous=True)
-    else:
-        xnat = Interface(url, username, password)
+class XnatImportError(StandardError):
+    pass
 
+def import_projects(dsc, xnat):
+    """
+    Import all projects from the given XNAT REST API Interface
+    """
+
+    _init_xnat(xnat)
+
+    for project in xnat.select.projects():
+        import_project(dsc, project)
+
+    print("Total projects: " + str(len(dsc.getContext().getProjects())))
+
+
+def import_project(dsc, xnatProject):
+    """
+    Import a single XNAT project.
+
+    """
+
+    ctx = dsc.getContext()
+
+    xnat_api_pause()
+    name = xnatProject.attrs.get('xnat:projectData/name')
+    xnat_api_pause()
+    purpose = xnatProject.attrs.get('xnat:projectData/description')
+    project = ctx.insertProject(name,
+        purpose,
+        datetime())
+
+    project.addProperty('xnat:datatype', xnatProject.datatype())
+
+    for s in iterate_entity_collection(xnatProject.subjects):
+        insert_source(dsc, s)
+
+    xnat_api_pause()
+    for k in xnatProject.attrs.get('xnat:projectData/keywords').split():
+        project.addTag(k)
+
+    return project
+
+def insert_source(dsc, xnatSubject):
+    """
+    Insert a single XNAT subject
+    """
+
+    sourceID = None
+    try:
+        sourceID = xnatSubject.id()
+    except:
+        XnatImportError("Unable to retrieve subject accession ID from " + xnatSubject._uri)
+
+    assert sourceID is not None
+
+    ctx = dsc.getContext()
+
+    src = ctx.sourceForInsertion([sourceID], ['xnat:subjectURI'], [xnatSubject._uri])
+
+    return src
+
+
+def _init_xnat(xnat):
     xnat.cache.clear()
-
-    # For central.xnat.org
     xnat.manage.schemas.add('xnat.xsd')
     xnat.manage.schemas.add('fs.xsd')
-
-    for p in xnat.select.projects():
-        _display_project(p)
-
-
-
-def print_entity_info(entity, info_indent=2):
-    pp = PrettyPrinter(indent=info_indent)
-    try:
-        if len(entity.attrs()) > 0:
-            entity_attributes = Attributes(entity)
-            for attr in entity.attrs():
-                if not ((attr[-1] == 's') or len(attr.split('/')) > 2):
-                    try:
-                        value = entity_attributes.get(attr)
-                        pp.pprint("  " + attr + ": " + value)
-                    except StandardError:
-                        pp.pprint("  " + attr + ": <unable to retrieve>")
-
-        pp.pprint("datatype: " + entity.datatype() if entity.datatype() is not None else "<None>")
-        pp.pprint("uri: " + entity._uri)
-    except StandardError,e:
-        print(e)
-
-
-
-def _display_project(project):
-    print("Project: " + project._uri)
-    print_entity_info(project, info_indent=2)
-
-    try:
-        for s in project.subjects():
-            _display_subject(s)
-        for exp in project.experiments():
-            _display_experiment(exp)
-    except:
-        pass
-
-def _display_subject(s):
-    pp = PrettyPrinter(indent=4)
-    pp.pprint("Subject: " + s._uri)
-    print_entity_info(s, info_indent=6)
-
-    # pp.pprint(s.attrs())
-
-def _display_experiment(exp):
-    pp = PrettyPrinter(indent=4)
-    pp.pprint("Experiment: " + exp._uri)
-    print_entity_info(exp, info_indent=6)
-
-    for s in exp.scans():
-        pps = PrettyPrinter(indent=6)
-        pps.pprint("Scan: " + s.id())
-        print_entity_info(s, info_indent=8)
-
-        for r in s.resources():
-            for f in r.files():
-                print("File: " + f._uri)
-
-
-
-if __name__ == '__main__':
-    display_project_structure('http://central.xnat.org', username='bwark', password='yeujEhT9XLssXuoW2bzv')
-
-
 

@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="120608ed-01c7-4014-bd7a-bb0c3c8bb85c" name="Default" comment="Fixed project to">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/java/test-manager/.idea/workspace.xml" afterPath="$PROJECT_DIR$/src/java/test-manager/.idea/workspace.xml" />
+    <list default="true" id="120608ed-01c7-4014-bd7a-bb0c3c8bb85c" name="Default" comment="Throttling API calls&#10;&#10;XNAT API bombs if you send &gt; 1 call/s">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ovation/xnat/display.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ovation/xnat/test/test_projects.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ovation/xnat/test/test_subjects.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ovation/xnat/util.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/ovation/xnat/test/TestXNATInterface.py" afterPath="$PROJECT_DIR$/src/ovation/xnat/test/test_xnat.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/runConfigurations/Unit_Tests.xml" afterPath="$PROJECT_DIR$/.idea/runConfigurations/Unit_Tests.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ovation/xnat/importer.py" afterPath="$PROJECT_DIR$/src/ovation/xnat/importer.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ovation/xnat/test/OvationTestBase.py" afterPath="$PROJECT_DIR$/src/ovation/xnat/test/OvationTestBase.py" />
     </list>
     <ignored path="ovation-xnat-import.iws" />
@@ -27,73 +35,80 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="importer.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ovation/xnat/importer.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="46" column="45" selection-start="1407" selection-end="1407" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="e#22#55#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="OvationTestBase.py" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/ovation/xnat/test/OvationTestBase.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="45" column="8" selection-start="1709" selection-end="1709" vertical-scroll-proportion="0.64534885">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="OvationTestManager.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/java/test-manager/src/main/java/us/physion/ovation/test/xnat/OvationTestManager.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="manage.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../.virtualenvs/xnat/lib/python2.7/site-packages/pyxnat/core/manage.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="136" column="8" selection-start="4160" selection-end="4160" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="errors.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../.virtualenvs/xnat/lib/python2.7/site-packages/pyxnat/core/errors.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="68" column="0" selection-start="2015" selection-end="2015" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="interfaces.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../.virtualenvs/xnat/lib/python2.7/site-packages/pyxnat/core/interfaces.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="375" column="0" selection-start="12816" selection-end="12816" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="attributes.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../.virtualenvs/xnat/lib/python2.7/site-packages/pyxnat/core/attributes.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="42" column="0" selection-start="1285" selection-end="1285" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <splitter split-orientation="horizontal" split-proportion="0.44755238">
+      <split-first>
+        <leaf>
+          <file leaf-file-name="display.py" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/ovation/xnat/display.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="3" column="20" selection-start="71" selection-end="71" vertical-scroll-proportion="0.0">
+                  <folding>
+                    <element signature="e#73#105#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="importer.py" pinned="false" current="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/ovation/xnat/importer.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="63" column="20" selection-start="1457" selection-end="1457" vertical-scroll-proportion="0.77790976">
+                  <folding>
+                    <element signature="e#73#105#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf>
+          <file leaf-file-name="test_projects.py" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/ovation/xnat/test/test_projects.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+                  <folding>
+                    <element signature="e#73#117#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="test_subjects.py" pinned="false" current="true" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/ovation/xnat/test/test_subjects.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="9" column="32" selection-start="259" selection-end="259" vertical-scroll-proportion="0.16033255">
+                  <folding>
+                    <element signature="e#73#128#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="util.py" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/ovation/xnat/util.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="4" column="0" selection-start="52" selection-end="52" vertical-scroll-proportion="0.0">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="OvationTestBase.py" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/ovation/xnat/test/OvationTestBase.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="3" column="2" selection-start="53" selection-end="53" vertical-scroll-proportion="0.0">
+                  <folding>
+                    <element signature="e#73#101#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-second>
+    </splitter>
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -106,26 +121,28 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/requirements.txt" />
-        <option value="$PROJECT_DIR$/development-requirements.txt" />
-        <option value="$PROJECT_DIR$/test/ovation/xnat/test/test_structure_parsing.py" />
-        <option value="$PROJECT_DIR$/test/ovation/xnat/test/utils.py" />
-        <option value="$PROJECT_DIR$/test/ovation/xnat/test/TestXNATInterface.py" />
         <option value="$PROJECT_DIR$/test/ovation/xnat/test/OvationTestBase.py" />
-        <option value="$PROJECT_DIR$/src/ovation/xnat/test/TestXNATInterface.py" />
         <option value="$PROJECT_DIR$/src/ovation/xnat/test/utils.py" />
-        <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/src/java/test-manager/pom.xml" />
         <option value="$PROJECT_DIR$/src/ovation/api.py" />
         <option value="$PROJECT_DIR$/../.virtualenvs/xnat/lib/python2.7/site-packages/pyxnat/core/manage.py" />
-        <option value="$PROJECT_DIR$/src/ovation/xnat/importer.py" />
+        <option value="$PROJECT_DIR$/src/ovation/xnat/test/TestXNATInterface.py" />
+        <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/src/ovation/xnat/test/TestImportsProjects.py" />
+        <option value="$PROJECT_DIR$/src/ovation/xnat/test/ImportingProjects.py" />
+        <option value="$PROJECT_DIR$/../.virtualenvs/xnat/lib/python2.7/site-packages/pyxnat/core/interfaces.py" />
+        <option value="$PROJECT_DIR$/src/ovation/xnat/util.py" />
+        <option value="$PROJECT_DIR$/src/ovation/xnat/display.py" />
         <option value="$PROJECT_DIR$/src/ovation/xnat/test/OvationTestBase.py" />
+        <option value="$PROJECT_DIR$/src/ovation/xnat/importer.py" />
+        <option value="$PROJECT_DIR$/src/ovation/xnat/test/test_projects.py" />
+        <option value="$PROJECT_DIR$/src/ovation/xnat/test/test_subjects.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
     <option name="y" value="22" />
-    <option name="width" value="2487" />
+    <option name="width" value="2094" />
     <option name="height" value="1418" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
@@ -154,61 +171,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope">
-        <subPane subId="Tests" />
-        <subPane subId="Project Files">
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="ovation-xnat-import">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="ovation-xnat-import">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="test">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="ovation">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="ovation-xnat-import">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="test">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="ovation">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="xnat">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -303,110 +265,63 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test-manager" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ovation-xnat-import" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ovation-xnat-import" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test-manager" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ovation-xnat-import" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ovation-xnat-import" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test-manager" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="us" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="physion" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ovation" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="xnat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ovation-xnat-import" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ovation-xnat-import" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="lib" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scope">
+        <subPane subId="Tests" />
+        <subPane subId="Project Files">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="ovation-xnat-import">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="ovation-xnat-import">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="test">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="ovation">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="ovation-xnat-import">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="test">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="ovation">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="xnat">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
@@ -416,13 +331,13 @@
   <component name="PropertiesComponent">
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="options.lastSelected" value="com.jetbrains.python.configuration.PythonSdkConfigurable" />
     <property name="recentsLimit" value="5" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/ovation/xnat/importer.py" />
+    <property name="options.lastSelected" value="Errors" />
     <property name="restartRequiresConfirmation" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/ovation/xnat/importer.py" />
     <property name="FullScreen" value="false" />
-    <property name="options.searchVisible" value="true" />
     <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="PyConsoleOptionsProvider">
     <option name="myPythonConsoleState">
@@ -438,7 +353,7 @@
       <recent name="$PROJECT_DIR$/src/ovation/xnat" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.Display Project Structure">
+  <component name="RunManager" selected="Python's test.Unit Tests">
     <configuration default="true" type="tests" factoryName="Nosetests">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -586,20 +501,20 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="22" width="2487" height="1418" extended-state="6" />
+    <frame x="0" y="22" width="2094" height="1418" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3299923" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3299923" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3299923" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3299923" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3299923" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.070748866" sideWeight="0.6700077" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17820565" sideWeight="0.69390905" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21875" sideWeight="0.6700077" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3993832" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.30609098" sideWeight="0.9877956" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2613724" sideWeight="0.9970703" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3299923" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -644,7 +559,7 @@
     <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Retreiving attributes!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Throttling API calls&#10;&#10;XNAT API bombs if you send &gt; 1 call/s" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -662,68 +577,56 @@
     <MESSAGE value="Importer spike" />
     <MESSAGE value="Structure printed&#10;&#10;Still having trouble with attributes" />
     <MESSAGE value="Retreiving attributes!" />
+    <MESSAGE value="Throttling API calls&#10;Fucking XNAT API bombs if you send &gt; 1 call/s" />
+    <MESSAGE value="Throttling API calls&#10;&#10;XNAT API bombs if you send &gt; 1 call/s" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <default-breakpoints>
         <breakpoint type="django-exception">
-          <properties exception="VariableDoesNotExist" />
+          <properties />
           <option name="timeStamp" value="1" />
         </breakpoint>
         <breakpoint type="javascript-exception">
           <properties />
           <option name="timeStamp" value="2" />
         </breakpoint>
-        <breakpoint enabled="true" type="python-exception">
+        <breakpoint enabled="true" log-message="true" type="python-exception">
           <properties notifyOnTerminate="true" exception="BaseException">
             <option name="notifyOnTerminate" value="true" />
           </properties>
           <option name="timeStamp" value="3" />
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="1335" />
+      <option name="time" value="1401" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/ovation/api.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="62" column="24" selection-start="1843" selection-end="1843" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/development-requirements.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="11" selection-start="11" selection-end="11" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ovation/xnat/test/utils.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="35" selection-start="443" selection-end="443" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file:///System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/unittest/case.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="317" column="0" selection-start="10519" selection-end="10519" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="31" selection-start="307" selection-end="307" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/test-manager/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="42" selection-start="42" selection-end="42" vertical-scroll-proportion="0.0" />
+        <state line="317" column="0" selection-start="10519" selection-end="10519" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ovation/api.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="48" column="9" selection-start="1233" selection-end="1233" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../.virtualenvs/xnat/lib/python2.7/site-packages/pyxnat/core/manage.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="136" column="8" selection-start="4160" selection-end="4160" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../.virtualenvs/xnat/lib/python2.7/site-packages/pyxnat/core/errors.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="68" column="0" selection-start="2015" selection-end="2015" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../.virtualenvs/xnat/lib/python2.7/site-packages/pyxnat/core/attributes.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="42" column="0" selection-start="1285" selection-end="1285" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -735,61 +638,83 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ovation/xnat/test/TestXNATInterface.py">
+    <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="0" selection-start="306" selection-end="306" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ovation/xnat/importer.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="46" column="45" selection-start="1407" selection-end="1407" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#22#55#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/test-manager/src/main/java/us/physion/ovation/test/xnat/OvationTestManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../.virtualenvs/xnat/lib/python2.7/site-packages/pyxnat/core/manage.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="136" column="8" selection-start="4160" selection-end="4160" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../.virtualenvs/xnat/lib/python2.7/site-packages/pyxnat/core/errors.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="68" column="0" selection-start="2015" selection-end="2015" vertical-scroll-proportion="0.0">
+        <state line="19" column="0" selection-start="229" selection-end="229" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../.virtualenvs/xnat/lib/python2.7/site-packages/pyxnat/core/interfaces.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="375" column="0" selection-start="12816" selection-end="12816" vertical-scroll-proportion="0.0">
+        <state line="312" column="0" selection-start="10090" selection-end="10090" vertical-scroll-proportion="0.28636885">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../.virtualenvs/xnat/lib/python2.7/site-packages/pyxnat/core/attributes.py">
+    <entry file="file://$PROJECT_DIR$/../.virtualenvs/xnat/lib/python2.7/site-packages/pyxnat/core/resources.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="42" column="0" selection-start="1285" selection-end="1285" vertical-scroll-proportion="0.0">
+        <state line="194" column="0" selection-start="5838" selection-end="5838" vertical-scroll-proportion="0.28636885">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ovation/xnat/test/test_xnat.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="0" selection-start="387" selection-end="387" vertical-scroll-proportion="0.22336769">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ovation/xnat/util.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="0" selection-start="52" selection-end="52" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ovation/xnat/display.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="20" selection-start="71" selection-end="71" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#73#105#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ovation/xnat/importer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="63" column="20" selection-start="1457" selection-end="1457" vertical-scroll-proportion="0.77790976">
+          <folding>
+            <element signature="e#73#105#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ovation/xnat/test/OvationTestBase.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="45" column="8" selection-start="1709" selection-end="1709" vertical-scroll-proportion="0.64534885">
-          <folding />
+        <state line="3" column="2" selection-start="53" selection-end="53" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#73#101#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ovation/xnat/test/test_projects.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#73#117#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ovation/xnat/test/test_subjects.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="32" selection-start="259" selection-end="259" vertical-scroll-proportion="0.16033255">
+          <folding>
+            <element signature="e#73#128#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
