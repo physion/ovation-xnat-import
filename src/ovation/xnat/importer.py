@@ -1,16 +1,15 @@
 '''
-Copyright (c) 2012 Physion Consulting, LLC
+Copyright (c) 2012 Physion Consulting, LLC. All rights reserved.
 '''
-__author__ = 'barry'
 
-
+from ovation.xnat.exceptions import OvationXnatException
 from time import mktime, strptime
 from datetime import datetime
 import ovation.api as api
-from ovation.xnat.util import  xnat_api_pause, xnat_api
+from ovation.xnat.util import  xnat_api_pause, xnat_api, atomic_attributes, entity_keywords, iterate_entity_collection
 
 
-class XnatImportError(StandardError):
+class XnatImportError(OvationXnatException):
     pass
 
 def import_projects(dsc, xnat):
@@ -26,6 +25,8 @@ def import_projects(dsc, xnat):
 
 
 DATATYPE_PROPERTY = 'xnat:datatype'
+
+
 
 def import_project(dsc, xnatProject, timezone='UTC'):
     """
@@ -69,7 +70,7 @@ def import_project(dsc, xnatProject, timezone='UTC'):
             minSessionDate.minute,
             minSessionDate.second,
             minSessionDate.microsecond * 1e3,
-            api.timezone_with_id(timezone)) #TODO timezone
+            api.timezone_with_id(timezone))
     else:
         startTime = api.datetime()
 
@@ -78,33 +79,46 @@ def import_project(dsc, xnatProject, timezone='UTC'):
         purpose,
         startTime)
 
-    project.addProperty(DATATYPE_PROPERTY, xnatProject.datatype())
+    _import_entity_common(project, xnatProject)
 
-
-    xnat_api_pause()
-    for k in xnatProject.attrs.get('xnat:projectData/keywords').split():
-        project.addTag(k)
+    for s in iterate_entity_collection(xnatProject.subjects):
+        insert_source(dsc, s)
 
     return project
+
+def _add_entity_keywords(ovEntity, xnatEntity):
+    try:
+        tags = entity_keywords(xnatEntity)
+        for k in tags:
+            ovEntity.addTag(k)
+    except OvationXnatException:
+        pass
+
+def _add_entity_attributes(ovEntity, xnatEntity):
+    attributes = atomic_attributes(xnatEntity)
+    for (k, v) in attributes.iteritems():
+        ovEntity.addProperty(k, v)
+
+def _import_entity_common(ovEntity, xnatEntity):
+    _add_entity_attributes(ovEntity, xnatEntity)
+    dtype = xnatEntity.datatype()
+    ovEntity.addProperty(DATATYPE_PROPERTY, dtype)
+    _add_entity_keywords(ovEntity, xnatEntity)
 
 def insert_source(dsc, xnatSubject):
     """
     Insert a single XNAT subject
     """
 
-    sourceID = None
-    try:
-        sourceID = xnatSubject.id()
-    except:
-        XnatImportError("Unable to retrieve subject accession ID from " + xnatSubject._uri)
-
-    assert sourceID is not None
+    sourceID = xnat_api(xnatSubject.id)
 
     ctx = dsc.getContext()
 
-    src = ctx.sourceForInsertion([sourceID], ['xnat:subjectURI'], [xnatSubject._uri]).getSource()
+    r = ctx.sourceForInsertion([sourceID], ['xnat:subjectURI'], [xnatSubject._uri])
+    src = r.getSource()
 
-    src.addProperty(DATATYPE_PROPERTY, 'xnat:subjectData')
+    if r.isNew():
+        _import_entity_common(src, xnatSubject)
 
     return src
 

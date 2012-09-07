@@ -1,6 +1,8 @@
 '''
 Copyright (c) 2012 Physion Consulting, LLC
 '''
+from ovation.xnat.importer import DATATYPE_PROPERTY
+
 __author__ = 'barry'
 
 
@@ -65,7 +67,7 @@ class ImportingProjects(OvationTestBase):
         ctx = self.dsc.getContext()
         project = ctx.getProjects()[0]
 
-        eq_(project.getOwnerProperty('xnat:datatype'), 'xnat:projectData')
+        eq_(project.getOwnerProperty(DATATYPE_PROPERTY), xnat_api(xnatProject.datatype))
 
     @istest
     def should_set_project_start_date_from_earliest_session_date(self):
@@ -84,9 +86,9 @@ class ImportingProjects(OvationTestBase):
             columns = (sessionType + '/DATE', sessionType + '/PROJECT')
             xnat_api_pause()
             query = xnat.select(sessionType, columns=columns).where([(sessionType + '/Project', '=', projectID), 'AND'])
-            sessionDates = [ datetime.fromtimestamp(mktime(strptime(time_str, '%Y-%m-%d %H:%M:%S.%f'))) for
+            sessionDates = [ datetime.fromtimestamp(mktime(strptime(time_str['date'], '%Y-%m-%d %H:%M:%S.%f'))) for
                              time_str in
-                             query if len(time_str) > 0]
+                             query if len(time_str['date']) > 0]
             if len(sessionDates) > 0:
                 for sd in sessionDates:
                     if minSessionDate is not None:
