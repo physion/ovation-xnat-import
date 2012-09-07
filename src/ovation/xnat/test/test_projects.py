@@ -1,7 +1,7 @@
 '''
 Copyright (c) 2012 Physion Consulting, LLC
 '''
-from ovation.xnat.importer import DATATYPE_PROPERTY
+from ovation.xnat.importer import DATATYPE_PROPERTY, DATE_FORMAT
 
 __author__ = 'barry'
 
@@ -9,11 +9,10 @@ __author__ = 'barry'
 from time import mktime, strptime
 
 
-from ovation.xnat.util import xnat_api_pause, xnat_api
+from ovation.xnat.util import xnat_api_pause, xnat_api, to_joda_datetime
 from nose.tools import eq_, istest
 
 from datetime import datetime
-import ovation.api as api
 
 from ovation.xnat.test.OvationTestBase import OvationTestBase
 
@@ -71,6 +70,7 @@ class ImportingProjects(OvationTestBase):
 
     @istest
     def should_set_project_start_date_from_earliest_session_date(self):
+        xnatProject,projectURI = self._import_first_project()
 
         # Find the earliest session date in the project
         projectID = xnat_api(xnatProject.id)
@@ -85,7 +85,7 @@ class ImportingProjects(OvationTestBase):
             columns = (sessionType + '/DATE', sessionType + '/PROJECT')
             xnat_api_pause()
             query = xnat.select(sessionType, columns=columns).where([(sessionType + '/Project', '=', projectID), 'AND'])
-            sessionDates = [ datetime.fromtimestamp(mktime(strptime(time_str['date'], '%Y-%m-%d %H:%M:%S.%f'))) for
+            sessionDates = [ datetime.fromtimestamp(mktime(strptime(time_str['date'], DATE_FORMAT))) for
                              time_str in
                              query if len(time_str['date']) > 0]
             if len(sessionDates) > 0:
@@ -98,19 +98,11 @@ class ImportingProjects(OvationTestBase):
 
 
         if minSessionDate is not None:
-            startTime = api.datetime(minSessionDate.year,
-                minSessionDate.month,
-                minSessionDate.day,
-                minSessionDate.hour,
-                minSessionDate.minute,
-                minSessionDate.second,
-                minSessionDate.microsecond * 1e3,
-                api.timezone_with_id('UTC'))
+            startTime = to_joda_datetime(minSessionDate, 'UTC')
         else:
             self.fail("Unable to find project sessions' start date")
 
 
-        xnatProject,projectURI = self._import_first_project()
 
         ctx = self.dsc.getContext()
         project = ctx.objectdWithURI(projectURI)

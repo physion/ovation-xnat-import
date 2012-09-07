@@ -78,6 +78,5 @@ def to_joda_datetime(date, timezone):
         date.day,
         date.hour,
         date.minute,
-        date.second,
-        date.microsecond,
+        int(date.microsecond / 1000),
         api.timezone_with_id(timezone))
