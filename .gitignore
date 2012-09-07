@@ -39,3 +39,5 @@ pip-log.txt
 *.DB
 
 *.JNL
+
+.idea/workspace.xml
