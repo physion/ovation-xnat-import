@@ -25,8 +25,8 @@ def import_projects(dsc, xnat):
 
 
 DATATYPE_PROPERTY = 'xnat:datatype'
-
-
+DATE_FORMAT = '%Y-%m-%d'
+DATETIME_FORMAT = '%Y-%m-%d %H:%M:%S.%f'
 
 def import_project(dsc, xnatProject, timezone='UTC'):
     """
@@ -50,9 +50,9 @@ def import_project(dsc, xnatProject, timezone='UTC'):
         columns = (sessionType + '/DATE', sessionType + '/PROJECT')
         xnat_api_pause()
         query = xnat.select(sessionType, columns=columns).where([(sessionType + '/Project', '=', projectID), 'AND'])
-        sessionDates = [ datetime.fromtimestamp(mktime(strptime(time_str['date'], '%Y-%m-%d %H:%M:%S.%f'))) for
-                         time_str in
-                         query if len(time_str['date']) > 0]
+        sessionDates = [ datetime.fromtimestamp(mktime(strptime(row['date'], DATE_FORMAT))) for
+                         row in
+                         query if len(row['date']) > 0]
         if len(sessionDates) > 0:
             for sd in sessionDates:
                 if minSessionDate is not None:
@@ -69,7 +69,7 @@ def import_project(dsc, xnatProject, timezone='UTC'):
             minSessionDate.hour,
             minSessionDate.minute,
             minSessionDate.second,
-            minSessionDate.microsecond * 1e3,
+            minSessionDate.microsecond,
             api.timezone_with_id(timezone))
     else:
         startTime = api.datetime()
@@ -82,9 +82,15 @@ def import_project(dsc, xnatProject, timezone='UTC'):
     _import_entity_common(project, xnatProject)
 
     for s in iterate_entity_collection(xnatProject.subjects):
-        insert_source(dsc, s)
+        src = import_source(dsc, s)
+        for session in iterate_entity_collection(s.sessions):
+            import_session(dsc, src, project, session)
 
     return project
+
+def import_session(dsc, src, project, xnatSession):
+    pass
+
 
 def _add_entity_keywords(ovEntity, xnatEntity):
     try:
@@ -105,7 +111,7 @@ def _import_entity_common(ovEntity, xnatEntity):
     ovEntity.addProperty(DATATYPE_PROPERTY, dtype)
     _add_entity_keywords(ovEntity, xnatEntity)
 
-def insert_source(dsc, xnatSubject):
+def import_source(dsc, xnatSubject):
     """
     Insert a single XNAT subject
     """

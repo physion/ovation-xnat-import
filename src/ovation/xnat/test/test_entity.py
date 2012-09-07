@@ -5,7 +5,7 @@ Copyright (c) 2012 Physion Consulting, LLC. All rights reserved.
 from ovation.xnat.util import xnat_api, entity_keywords, is_atomic_attribute
 from nose.tools import  istest, eq_
 from ovation.xnat.test.OvationTestBase import OvationTestBase
-from ovation.xnat.importer import insert_source
+from ovation.xnat.importer import import_source
 
 
 class ImportingEntityMetadata(OvationTestBase):
@@ -46,6 +46,6 @@ class ImportingEntityMetadata(OvationTestBase):
         '''
         xnatEntity = xnat_api(self.xnat.select('/subjects').first)
 
-        source = insert_source(self.dsc, xnatEntity)
+        source = import_source(self.dsc, xnatEntity)
 
         return (source, xnatEntity)

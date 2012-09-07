@@ -29,7 +29,7 @@ class OvationTestBase(unittest.TestCase):
     def _import_first_project(self):
         self._init_xnat_connection()
 
-        xnatProject = self.xnat.select.projects().first()
+        xnatProject = self.xnat.select.project('IGT_FMRI_NEURO')
         import_project(self.dsc, xnatProject)
         return xnatProject
 
