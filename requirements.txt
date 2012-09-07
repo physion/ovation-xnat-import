@@ -1,0 +1,5 @@
+httplib2==0.7.4
+ipython==0.13
+lxml==2.3.5
+pyxnat==0.9.3
+wsgiref==0.1.2
