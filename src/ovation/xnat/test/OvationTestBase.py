@@ -30,8 +30,8 @@ class OvationTestBase(unittest.TestCase):
         self._init_xnat_connection()
 
         xnatProject = self.xnat.select.project('IGT_FMRI_NEURO')
-        import_project(self.dsc, xnatProject)
-        return xnatProject
+        projectURI = import_project(self.dsc, xnatProject).getURI()
+        return (xnatProject,projectURI)
 
     def _init_xnat_connection(self):
         self.xnat = Interface(os.environ["XNAT_URL"],

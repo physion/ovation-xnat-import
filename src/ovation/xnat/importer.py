@@ -6,7 +6,7 @@ from ovation.xnat.exceptions import OvationXnatException
 from time import mktime, strptime
 from datetime import datetime
 import ovation.api as api
-from ovation.xnat.util import  xnat_api_pause, xnat_api, atomic_attributes, entity_keywords, iterate_entity_collection
+from ovation.xnat.util import  xnat_api_pause, xnat_api, atomic_attributes, entity_keywords, iterate_entity_collection, to_joda_datetime
 
 
 class XnatImportError(OvationXnatException):
@@ -27,6 +27,7 @@ def import_projects(dsc, xnat):
 DATATYPE_PROPERTY = 'xnat:datatype'
 DATE_FORMAT = '%Y-%m-%d'
 DATETIME_FORMAT = '%Y-%m-%d %H:%M:%S.%f'
+
 
 def import_project(dsc, xnatProject, timezone='UTC'):
     """
@@ -63,14 +64,7 @@ def import_project(dsc, xnatProject, timezone='UTC'):
 
 
     if minSessionDate is not None:
-        startTime = api.datetime(minSessionDate.year,
-            minSessionDate.month,
-            minSessionDate.day,
-            minSessionDate.hour,
-            minSessionDate.minute,
-            minSessionDate.second,
-            minSessionDate.microsecond,
-            api.timezone_with_id(timezone))
+        startTime = to_joda_datetime(minSessionDate, timezone)
     else:
         startTime = api.datetime()
 

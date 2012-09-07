@@ -1,7 +1,9 @@
 '''
-Copyright (c) 2012 Physion Consulting, LLC
+Copyright (c) 2012 Physion Consulting, LLC. All rights reserved.
 '''
+
 from pyxnat.core.errors import DatabaseError
+from ovation import api
 
 __author__ = 'barry'
 
@@ -28,6 +30,12 @@ def entity_keywords(e):
         return xnat_api(e.attrs.get, attr).split()
     else:
         return []
+
+def entity_resource_files(e):
+    for rsrc in iterate_entity_collection(e.resources):
+        for f in iterate_entity_collection(rsrc.files):
+            yield f
+
 
 def is_atomic_attribute(e, attr):
     return _is_atomic_attribute_in_attrs(attr, e.attrs())
@@ -63,3 +71,13 @@ def atomic_attributes(e):
 
 
     return result
+
+def to_joda_datetime(date, timezone):
+    return api.datetime(date.year,
+        date.month,
+        date.day,
+        date.hour,
+        date.minute,
+        date.second,
+        date.microsecond,
+        api.timezone_with_id(timezone))

@@ -35,10 +35,10 @@ class ImportingProjects(OvationTestBase):
 
     @istest
     def should_import_project_name_and_purpose_from_entity_attributes(self):
-        xnatProject = self._import_first_project()
+        xnatProject,projectURI = self._import_first_project()
 
         ctx = self.dsc.getContext()
-        project = ctx.getProjects()[0]
+        project = ctx.objectdWithURI(projectURI)
 
         xnat_api_pause()
         expectedName = xnatProject.attrs.get('xnat:projectData/name')
@@ -50,10 +50,10 @@ class ImportingProjects(OvationTestBase):
 
     @istest
     def should_import_project_keywords(self):
-        xnatProject = self._import_first_project()
+        xnatProject,projectURI = self._import_first_project()
 
         ctx = self.dsc.getContext()
-        project = ctx.getProjects()[0]
+        project = ctx.objectdWithURI(projectURI)
 
         xnat_api_pause()
         expectedKeywords = xnatProject.attrs.get('xnat:projectData/keywords').split()
@@ -62,16 +62,15 @@ class ImportingProjects(OvationTestBase):
 
     @istest
     def should_set_project_datatype_property(self):
-        xnatProject = self._import_first_project()
+        xnatProject,projectURI = self._import_first_project()
 
         ctx = self.dsc.getContext()
-        project = ctx.getProjects()[0]
+        project = ctx.objectdWithURI(projectURI)
 
         eq_(project.getOwnerProperty(DATATYPE_PROPERTY), xnat_api(xnatProject.datatype))
 
     @istest
     def should_set_project_start_date_from_earliest_session_date(self):
-        xnatProject = self._import_first_project()
 
         # Find the earliest session date in the project
         projectID = xnat_api(xnatProject.id)
@@ -110,8 +109,11 @@ class ImportingProjects(OvationTestBase):
         else:
             self.fail("Unable to find project sessions' start date")
 
+
+        xnatProject,projectURI = self._import_first_project()
+
         ctx = self.dsc.getContext()
-        project = ctx.getProjects()[0]
+        project = ctx.objectdWithURI(projectURI)
 
 
         eq_(project.getStartTime(), startTime)

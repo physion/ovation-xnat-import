@@ -2,7 +2,7 @@
 Copyright (c) 2012 Physion Consulting, LLC. All rights reserved.
 '''
 
-from ovation.xnat.util import xnat_api, entity_keywords, is_atomic_attribute
+from ovation.xnat.util import xnat_api, entity_keywords, is_atomic_attribute, entity_resource_files
 from nose.tools import  istest, eq_
 from ovation.xnat.test.OvationTestBase import OvationTestBase
 from ovation.xnat.importer import import_source
@@ -10,12 +10,13 @@ from ovation.xnat.importer import import_source
 
 class ImportingEntityMetadata(OvationTestBase):
 
+
     @istest
     def should_import_keywords(self):
-        xnatProject = self._import_first_project()
+        xnatProject,projectURI = self._import_first_project()
 
         ctx = self.dsc.getContext()
-        project = ctx.getProjects()[0]
+        project = ctx.objectdWithURI(projectURI)
 
         tags = entity_keywords(xnatProject)
         actualTags = project.getTags()
@@ -24,7 +25,15 @@ class ImportingEntityMetadata(OvationTestBase):
 
     @istest
     def should_import_resources(self):
-        self.fail("implement")
+        xnatProject,projectURI = self._import_first_project()
+
+        ctx = self.dsc.getContext()
+        project = ctx.objectdWithURI(projectURI)
+
+        files = entity_resource_files(xnatProject)
+        for f in files:
+            fileURI = self.xnat._server + f._uri
+            self.assertIsNotNone(project.getResource(fileURI))
 
     @istest
     def should_import_attrs(self):

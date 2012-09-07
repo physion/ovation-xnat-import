@@ -1,10 +1,8 @@
 '''
 Copyright (c) 2012 Physion Consulting, LLC
 '''
+
 from ovation.xnat.importer import DATATYPE_PROPERTY
-
-__author__ = 'barry'
-
 from ovation.xnat.util import iterate_entity_collection, xnat_api
 from nose.tools import eq_, istest
 from ovation.xnat.test.OvationTestBase import OvationTestBase
@@ -19,7 +17,7 @@ class ImportingSubjects(OvationTestBase):
 
     @istest
     def should_import_all_subjects_for_project(self):
-        xnatProject = self._import_first_project()
+        xnatProject = self._import_first_project()[0]
 
         ctx = self.dsc.getContext()
 
@@ -33,7 +31,7 @@ class ImportingSubjects(OvationTestBase):
 
     @istest
     def should_set_subject_datatype_property(self):
-        xnatProject = self._import_first_project()
+        xnatProject = self._import_first_project()[0]
 
         ctx = self.dsc.getContext()
 
