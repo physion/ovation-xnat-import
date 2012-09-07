@@ -8,7 +8,7 @@
       <env name="XNAT_USER" value="bwark" />
       <env name="PYTHONPATH" value="src:test:$PYTHONPATH" />
       <env name="OVATION_API_JAR_PATH" value="lib/ovation-api-1.4.jar" />
-      <env name="XNAT_URL" value="http://central.xnat.org" />
+      <env name="XNAT_URL" value="https://central.xnat.org" />
       <env name="OVATION_TEST_JAR_PATH" value="lib/ovation-test-manager-1.4.jar" />
       <env name="OVATION_CONNECTION_FILE" value="xnat_test_database.connection" />
     </envs>

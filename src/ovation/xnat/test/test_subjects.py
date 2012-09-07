@@ -40,4 +40,4 @@ class ImportingSubjects(OvationTestBase):
             sources = ctx.getSources(subjectID)
 
             eq_(1, len(sources))
-            eq_('xnat:subjectdData', sources[0].getOwnerProperty('xnat:datatype'))
+            eq_('xnat:subjectData', sources[0].getOwnerProperty('xnat:datatype'))

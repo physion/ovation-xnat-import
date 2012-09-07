@@ -40,4 +40,5 @@ pip-log.txt
 
 *.JNL
 
+# IDEA
 .idea/workspace.xml
